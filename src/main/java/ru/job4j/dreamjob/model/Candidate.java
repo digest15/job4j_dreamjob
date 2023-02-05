@@ -10,13 +10,16 @@ public class Candidate {
 
     private String description;
 
-    private LocalDateTime creationDate;
+    private LocalDateTime creationDate = LocalDateTime.now();
 
-    public Candidate(int id, String title, String description) {
+    public Candidate() {
+
+    }
+
+    public Candidate(int id, String name, String description) {
         this.id = id;
-        this.name = title;
+        this.name = name;
         this.description = description;
-        this.creationDate = LocalDateTime.now();
     }
 
     public int getId() {
