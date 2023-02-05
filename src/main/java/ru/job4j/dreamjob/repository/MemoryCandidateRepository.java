@@ -19,12 +19,12 @@ public class MemoryCandidateRepository implements CandidateRepository {
     private final Map<Integer, Candidate> candidates = new ConcurrentHashMap<>();
 
     private MemoryCandidateRepository() {
-        save(new Candidate(0, "Иванов", "Java 6 yeas"));
-        save(new Candidate(1, "Петров", "Java 3 yeas"));
-        save(new Candidate(2, "Сидоров", "Java 2 yeas"));
-        save(new Candidate(3, "Баширов", "Like Salisbury"));
-        save(new Candidate(4, "Чипига", "Like spires"));
-        save(new Candidate(5, "Арсентьев", "Like job4j"));
+        save(new Candidate(0, "Иванов", "Java 6 yeas", 0, 0));
+        save(new Candidate(1, "Петров", "Java 3 yeas", 0, 0));
+        save(new Candidate(2, "Сидоров", "Java 2 yeas", 0, 0));
+        save(new Candidate(3, "Баширов", "Like Salisbury", 0, 0));
+        save(new Candidate(4, "Чипига", "Like spires", 0, 0));
+        save(new Candidate(5, "Арсентьев", "Like job4j", 0, 0));
     }
 
     @Override
@@ -46,7 +46,8 @@ public class MemoryCandidateRepository implements CandidateRepository {
                         oldVacancy.getId(),
                         candidate.getName(),
                         candidate.getDescription(),
-                        candidate.getCityId()
+                        candidate.getCityId(),
+                        candidate.getFileId()
                 )
         ) != null;
     }

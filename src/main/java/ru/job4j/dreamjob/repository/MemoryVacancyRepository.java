@@ -19,12 +19,12 @@ public class MemoryVacancyRepository implements VacancyRepository {
     private final Map<Integer, Vacancy> vacancies = new ConcurrentHashMap<>();
 
     private MemoryVacancyRepository() {
-        save(new Vacancy(0, "Intern Java Developer", "Descr 1", true));
-        save(new Vacancy(1, "Junior Java Developer", "Descr 2", true));
-        save(new Vacancy(2, "Junior+ Java Developer", "Descr 3", true));
-        save(new Vacancy(3, "Middle Java Developer", "Descr 4", true));
-        save(new Vacancy(4, "Middle+ Java Developer", "Descr 5", true));
-        save(new Vacancy(5, "Senior Java Developer", "Descr 6", true));
+        save(new Vacancy(0, "Intern Java Developer", "Descr 1", true, 0, 0));
+        save(new Vacancy(1, "Junior Java Developer", "Descr 2", true, 0, 0));
+        save(new Vacancy(2, "Junior+ Java Developer", "Descr 3", true, 0, 0));
+        save(new Vacancy(3, "Middle Java Developer", "Descr 4", true, 0, 0));
+        save(new Vacancy(4, "Middle+ Java Developer", "Descr 5", true, 0, 0));
+        save(new Vacancy(5, "Senior Java Developer", "Descr 6", true, 0, 0));
     }
 
     @Override
@@ -46,7 +46,8 @@ public class MemoryVacancyRepository implements VacancyRepository {
                         vacancy.getTitle(),
                         vacancy.getDescription(),
                         vacancy.getVisible(),
-                        vacancy.getCityId()
+                        vacancy.getCityId(),
+                        vacancy.getFileId()
                 )
         ) != null;
     }
