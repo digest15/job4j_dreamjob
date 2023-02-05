@@ -1,5 +1,6 @@
 package ru.job4j.dreamjob.repository;
 
+import org.springframework.stereotype.Repository;
 import ru.job4j.dreamjob.model.Vacancy;
 
 import java.util.Collection;
@@ -7,8 +8,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
+@Repository
 public class MemoryVacancyRepository implements VacancyRepository {
-    private static final MemoryVacancyRepository INSTANCE = new MemoryVacancyRepository();
 
     private int nextId = 1;
 
@@ -21,10 +22,6 @@ public class MemoryVacancyRepository implements VacancyRepository {
         save(new Vacancy(3, "Middle Java Developer", "Descr 4"));
         save(new Vacancy(4, "Middle+ Java Developer", "Descr 5"));
         save(new Vacancy(5, "Senior Java Developer", "Descr 6"));
-    }
-
-    public static MemoryVacancyRepository getInstance() {
-        return INSTANCE;
     }
 
     @Override
