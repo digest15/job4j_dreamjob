@@ -20,7 +20,7 @@ public class Sql2oCandidateRepository implements CandidateRepository {
     public Candidate save(Candidate candidate) {
         try (var connection = sql2o.open()) {
             var sql = """
-                      INSERT INTO candidaties(name, description, creation_date, city_id, file_id)
+                      INSERT INTO candidates(name, description, creation_date, city_id, file_id)
                       VALUES (:name, :description, :creationDate, :cityId, :fileId)
                       """;
             var query = connection.createQuery(sql, true)
@@ -38,7 +38,7 @@ public class Sql2oCandidateRepository implements CandidateRepository {
     @Override
     public boolean deleteById(int id) {
         try (var connection = sql2o.open()) {
-            var query = connection.createQuery("DELETE FROM candidaties WHERE id = :id");
+            var query = connection.createQuery("DELETE FROM candidates WHERE id = :id");
             query.addParameter("id", id);
             var affectedRows = query.executeUpdate().getResult();
             return affectedRows > 0;
@@ -49,8 +49,8 @@ public class Sql2oCandidateRepository implements CandidateRepository {
     public boolean update(Candidate candidate) {
         try (var connection = sql2o.open()) {
             var sql = """
-                    UPDATE candidaties
-                    SET title = :name, description = :description, creation_date = :creationDate,
+                    UPDATE candidates
+                    SET name = :name, description = :description, creation_date = :creationDate,
                         city_id = :cityId, file_id = :fileId
                     WHERE id = :id
                     """;
@@ -69,7 +69,7 @@ public class Sql2oCandidateRepository implements CandidateRepository {
     @Override
     public Optional<Candidate> findById(int id) {
         try (var connection = sql2o.open()) {
-            var query = connection.createQuery("SELECT * FROM candidaties WHERE id = :id");
+            var query = connection.createQuery("SELECT * FROM candidates WHERE id = :id");
             query.addParameter("id", id);
             var candidate = query.setColumnMappings(Candidate.COLUMN_MAPPING).executeAndFetchFirst(Candidate.class);
             return Optional.ofNullable(candidate);
@@ -79,7 +79,7 @@ public class Sql2oCandidateRepository implements CandidateRepository {
     @Override
     public Collection<Candidate> findAll() {
         try (var connection = sql2o.open()) {
-            var query = connection.createQuery("SELECT * FROM candidaties");
+            var query = connection.createQuery("SELECT * FROM candidates");
             return query.setColumnMappings(Candidate.COLUMN_MAPPING).executeAndFetch(Candidate.class);
         }
     }
