@@ -49,10 +49,6 @@
                             <option th:each="city : ${cities}" th:value="${city.id}" th:text="${city.name}" th:field="*{cityId}" th:selected="${city.id==cityId}"></option>
                         </select>
                     </div>
-                    <div class="form-check mb-3">
-                        <input type="checkbox" name="visible" class="form-check-input" id="visible" th:field="*{visible}">
-                        <label class="form-check-label" for="visible">Опубликовать</label>
-                    </div>
                 </div>
             </div>
             <div class="mb-3">
