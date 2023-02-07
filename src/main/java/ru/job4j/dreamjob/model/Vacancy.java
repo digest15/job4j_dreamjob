@@ -42,6 +42,17 @@ public class Vacancy {
         this.fileId = fileId;
     }
 
+    public Vacancy(int id, String title, String description,
+                   LocalDateTime creationDate, boolean visible, int cityId, int fileId) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.visible = visible;
+        this.cityId = cityId;
+        this.fileId = fileId;
+        this.creationDate = creationDate;
+    }
+
     public int getId() {
         return id;
     }
