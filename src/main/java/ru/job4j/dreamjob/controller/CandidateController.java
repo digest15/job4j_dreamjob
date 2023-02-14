@@ -68,7 +68,7 @@ public class CandidateController {
                     )
             );
             if (!isUpdated) {
-                model.addAttribute("message", "Вакансия с указанным идентификатором не найдена");
+                model.addAttribute("message", "Кандидат с указанным идентификатором не найдена");
                 return "errors/404";
             }
             return "redirect:/candidates";
